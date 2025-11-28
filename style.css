@@ -1,0 +1,483 @@
+/* Google fonts – clean & professional */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap');
+
+:root {
+  --primary: #6A4DFF;
+  --accent: #FF4D9A;
+  --bg-body: #F5F3FF;
+  --bg-card: #FFFFFF;
+  --bg-card-soft: #F4EFFF;
+  --header-dark-1: #05041A;
+  --header-dark-2: #120A3A;
+  --text-main: #1C1C1C;
+  --text-muted: #6B7280;
+  --border-soft: #E5E7EB;
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* GLOBAL */
+body {
+  background: var(--bg-body);
+  color: var(--text-main);
+  font-family: 'Poppins', sans-serif;
+}
+
+body, p, li, label, input, select, textarea, button {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* TOP NAV BAR (dark, premium) */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 32px;
+  background: linear-gradient(120deg, var(--header-dark-1), var(--header-dark-2));
+  color: #F9FAFB;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.6);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: rgba(148, 163, 253, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-main {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.logo-sub {
+  font-size: 11px;
+  color: #E5E7EB;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-chip {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(209, 213, 219, 0.7);
+  font-size: 11px;
+}
+
+/* MAIN LAYOUT */
+main {
+  max-width: 1120px;
+  margin: 22px auto 32px;
+  padding: 0 16px;
+}
+
+/* CARD BASE – gradient like Byju’s */
+.card {
+  background: linear-gradient(155deg, var(--bg-card) 40%, var(--bg-card-soft) 100%);
+  border-radius: 18px;
+  border: none;
+  padding: 20px 22px;
+  margin-bottom: 18px;
+  box-shadow: 0px 10px 24px rgba(106, 77, 255, 0.18);
+}
+
+/* HERO / LANDING CARD */
+.landing-card {
+  border-top: 4px solid var(--primary);
+}
+
+.landing-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1.1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.landing-left h1 {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #1F2933;
+}
+
+.lead {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.lead-small {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.hero-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.tag-pill {
+  font-size: 11px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #EEF2FF;
+  color: #4F46E5;
+  border: 1px solid #E0E7FF;
+}
+
+/* HERO RIGHT – small stats */
+.landing-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stat-card {
+  background: #111827;
+  color: #F9FAFB;
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+
+.stat-label {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+.stat-value {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* FEATURES GRID */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.feature-box {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 10px 12px;
+  border: 1px solid #E5E7EB;
+}
+
+.feature-box h3 {
+  font-size: 13px;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.feature-box p {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* AUTH SECTION */
+.auth-card {
+  border-top: 4px solid #22C55E;
+}
+
+.auth-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1.1fr;
+  gap: 20px;
+}
+
+.bullet-list {
+  color: var(--text-muted);
+  font-size: 13px;
+  padding-left: 18px;
+  margin-top: 4px;
+}
+
+.bullet-list li {
+  margin-bottom: 4px;
+}
+
+.bullet-list.small {
+  font-size: 12px;
+}
+
+/* AUTH RIGHT PANEL */
+.auth-right {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 14px 14px 16px;
+  border: 1px solid #E5E7EB;
+}
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 7px 0;
+  border-radius: 999px;
+  border: 1px solid #E5E7EB;
+  background: #F9FAFB;
+  color: #374151;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.tab-btn.active {
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  color: #FFFFFF;
+  border-color: transparent;
+}
+
+.hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+/* FORM FIELDS */
+label {
+  font-size: 12px;
+  margin-top: 6px;
+  margin-bottom: 2px;
+  color: #111827;
+}
+
+input, select, textarea {
+  width: 100%;
+  background: #F9FAFB;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+  padding: 8px 10px;
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #111827;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px rgba(106, 77, 255, 0.3);
+}
+
+/* BUTTONS – gradient like Byju's */
+.btn {
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 12px;
+  color: #FFFFFF;
+  padding: 9px 16px;
+  border: none;
+  font-weight: 500;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(255, 77, 154, 0.28);
+  transition: 0.18s ease-in-out;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(106, 77, 255, 0.35);
+}
+
+.btn.small {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.btn.full {
+  width: 100%;
+}
+
+.btn.ghost {
+  background: transparent;
+  border-radius: 999px;
+  border: 1px solid #E5E7EB;
+  box-shadow: none;
+  color: #F9FAFB;
+}
+
+/* DASHBOARD SECTIONS */
+.dashboard-card {
+  border-top: 4px solid var(--primary);
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.dashboard-header h2 {
+  font-size: 18px;
+  color: #1F2933;
+}
+
+.dashboard-badge {
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(106, 77, 255, 0.08);
+  color: var(--primary);
+}
+
+.dashboard-badge.student {
+  background: rgba(249, 115, 22, 0.12);
+  color: #EA580C;
+}
+
+/* SUB-SECTIONS */
+.sub-section {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #E5E7EB;
+}
+
+.section-text {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* TWO COLUMN LAYOUT */
+.two-column {
+  display: grid;
+  grid-template-columns: 1.6fr 1.1fr;
+  gap: 18px;
+}
+
+/* COURSE / PROGRESS LISTS */
+.course-list,
+.progress-list {
+  list-style: none;
+  margin-top: 8px;
+}
+
+.course-list li,
+.progress-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+.course-list li strong,
+.progress-list li strong {
+  color: #111827;
+}
+
+/* QUIZ CREATOR / QUIZ */
+.quiz-creator {
+  margin-top: 10px;
+}
+
+.quiz-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1.1fr;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.quiz-section {
+  margin-top: 10px;
+}
+
+.quiz-question {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.quiz-result-text {
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+/* UTILITIES */
+.hidden {
+  display: none !important;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 14px 0 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .landing-grid,
+  .auth-grid,
+  .two-column,
+  .quiz-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 0 10px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .top-bar {
+    padding: 10px 16px;
+  }
+}

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sikhya Setu Arena Lite – Digital Web Learning Platform</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Firebase CDN (Compat) -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="top-bar">
+    <div class="brand">
+      <div class="logo-icon">📚</div>
+      <div class="logo-text">
+        <div class="logo-main">Sikhya Setu Arena Lite</div>
+        <div class="logo-sub">Smart Digital Learning for Rural Students</div>
+      </div>
+    </div>
+    <nav class="nav-right">
+      <span id="userRoleText" class="user-chip"></span>
+      <button id="logoutBtn" class="btn small ghost hidden">Logout</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO / INTRO + FEATURES -->
+    <section id="landingSection" class="card landing-card">
+      <div class="landing-grid">
+        <div class="landing-left">
+          <h1>Welcome to Sikhya Setu Arena Lite</h1>
+          <p class="lead">
+            A lightweight digital learning platform designed to make rural education smarter,
+            interactive and future-ready — without needing powerful devices or fast internet.
+          </p>
+          <p class="lead-small">
+            Teachers can create simple online courses and quizzes, and students can learn
+            from basic devices. The goal is to reduce the digital gap between rural and
+            urban education.
+          </p>
+
+          <div class="hero-tag-row">
+            <span class="tag-pill">🌐 Rural-friendly Web App</span>
+            <span class="tag-pill">📱 Works on Low-end Devices</span>
+            <span class="tag-pill">🧑‍🏫 Teacher &amp; Student Roles</span>
+          </div>
+        </div>
+
+        <div class="landing-right">
+          <div class="stat-card">
+            <div class="stat-label">Target Users</div>
+            <div class="stat-value">Rural Students &amp; Teachers</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Key Focus</div>
+            <div class="stat-value">Digital Literacy &amp; Core Subjects</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Access</div>
+            <div class="stat-value">Low Bandwidth &amp; Web-based</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-box">
+          <h3>Built for Rural Schools</h3>
+          <p>Optimized for low-end devices and unstable or slow internet connections.</p>
+        </div>
+        <div class="feature-box">
+          <h3>Interactive Learning</h3>
+          <p>Simple courses and quizzes to keep students engaged and active.</p>
+        </div>
+        <div class="feature-box">
+          <h3>Teacher Dashboard</h3>
+          <p>Teachers can create courses and quiz questions without complex tools.</p>
+        </div>
+        <div class="feature-box">
+          <h3>Student Progress</h3>
+          <p>Quiz attempts are recorded so that performance can be viewed later.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTH SECTION (LOGIN / SIGNUP) -->
+    <section id="authSection" class="card auth-card">
+      <div class="auth-grid">
+        <div class="auth-left">
+          <h2>Get Started with Sikhya Setu Arena Lite</h2>
+          <p class="lead-small">
+            Create an account as a Teacher or Student and start using the platform.
+            Teachers can manage courses, and students can learn and attempt quizzes.
+          </p>
+
+          <ul class="bullet-list">
+            <li>Separate dashboards for Teachers and Students</li>
+            <li>Secure login using email &amp; password</li>
+            <li>Designed for government and rural schools</li>
+          </ul>
+        </div>
+
+        <div class="auth-right">
+          <div class="tabs">
+            <button class="tab-btn active" id="showLoginTab">Login</button>
+            <button class="tab-btn" id="showSignupTab">Sign Up</button>
+          </div>
+
+          <!-- Login Form -->
+          <div id="loginFormWrapper">
+            <h3>Login</h3>
+            <p class="hint">Enter your registered email and password.</p>
+
+            <label for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" placeholder="example@school.com" />
+
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" placeholder="Enter your password" />
+
+            <button id="loginBtn" class="btn full">Login</button>
+          </div>
+
+          <!-- Signup Form -->
+          <div id="signupFormWrapper" class="hidden">
+            <h3>Create a New Account</h3>
+            <p class="hint">
+              Choose Teacher if you want to create courses. Choose Student if you want to learn.
+            </p>
+
+            <label for="signupName">Full Name</label>
+            <input type="text" id="signupName" placeholder="Enter your full name" />
+
+            <label for="signupEmail">Email</label>
+            <input type="email" id="signupEmail" placeholder="example@school.com" />
+
+            <label for="signupPassword">Password</label>
+            <input type="password" id="signupPassword" placeholder="Minimum 6 characters" />
+
+            <label for="signupRole">Select Role</label>
+            <select id="signupRole">
+              <option value="student">Student</option>
+              <option value="teacher">Teacher</option>
+            </select>
+
+            <button id="signupBtn" class="btn full">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEACHER DASHBOARD -->
+    <section id="teacherDashboard" class="card dashboard-card hidden">
+      <div class="dashboard-header">
+        <div>
+          <h2>Teacher Dashboard</h2>
+          <p class="lead-small">
+            Design and manage digital courses for your rural students. Each course can have
+            multiple quiz questions and different learning materials.
+          </p>
+        </div>
+        <div class="dashboard-badge">Teacher Mode</div>
+      </div>
+
+      <!-- Create Course -->
+      <div class="sub-section two-column">
+        <div class="sub-block">
+          <h3>Create a New Course</h3>
+          <p class="section-text">Fill the details below to create a new course.</p>
+
+          <label for="courseTitle">Course Title</label>
+          <input type="text" id="courseTitle" placeholder="e.g. Basic Computer Skills" />
+
+          <label for="courseDescription">Short Description</label>
+          <textarea id="courseDescription" placeholder="What will this course teach?"></textarea>
+
+          <label for="courseLanguage">Course Language</label>
+          <select id="courseLanguage">
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Punjabi">Punjabi</option>
+          </select>
+
+          <!-- MULTIPLE MATERIAL LINKS -->
+          <label for="courseVideoLink">Video Link (YouTube, etc.)</label>
+          <input type="text" id="courseVideoLink" placeholder="Paste video link for this course" />
+
+          <label for="coursePdfLink">PDF / Notes Link</label>
+          <input type="text" id="coursePdfLink" placeholder="Paste PDF/Notes/Drive link" />
+
+          <label for="courseExtraLink">Extra Resource Link</label>
+          <input type="text" id="courseExtraLink" placeholder="Any extra website or material link" />
+
+          <button id="createCourseBtn" class="btn">Create Course</button>
+        </div>
+
+        <div class="sub-block">
+          <h3>Suggested Rural-Friendly Topics</h3>
+          <p class="section-text">
+            Focus on topics like:
+          </p>
+          <ul class="bullet-list small">
+            <li>Introduction to Computers &amp; Devices</li>
+            <li>Safe Use of Internet &amp; Digital Hygiene</li>
+            <li>Basic Office Tools (Typing, Word, etc.)</li>
+            <li>Digital Payments &amp; Online Forms</li>
+          </ul>
+          <p class="section-text">
+            These topics help rural students build confidence with technology and prepare
+            for higher education and jobs.
+          </p>
+        </div>
+      </div>
+
+      <!-- Add Quiz -->
+      <div class="sub-section quiz-creator">
+        <h3>Add Quiz Question</h3>
+        <p class="section-text">
+          Select a course and add one multiple-choice question at a time.
+        </p>
+
+        <label for="quizCourseSelect">Select Course</label>
+        <select id="quizCourseSelect"></select>
+
+        <div class="quiz-grid">
+          <div>
+            <label for="quizQuestion">Question</label>
+            <input type="text" id="quizQuestion" placeholder="Enter the quiz question" />
+          </div>
+          <div class="options-grid">
+            <div>
+              <label for="quizOptA">Option A</label>
+              <input type="text" id="quizOptA" />
+            </div>
+            <div>
+              <label for="quizOptB">Option B</label>
+              <input type="text" id="quizOptB" />
+            </div>
+            <div>
+              <label for="quizOptC">Option C</label>
+              <input type="text" id="quizOptC" />
+            </div>
+            <div>
+              <label for="quizOptD">Option D</label>
+              <input type="text" id="quizOptD" />
+            </div>
+          </div>
+
+          <div>
+            <label for="quizCorrect">Correct Option</label>
+            <select id="quizCorrect">
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="addQuizBtn" class="btn">Add Quiz Question</button>
+      </div>
+
+      <!-- Teacher Courses List -->
+      <div class="sub-section">
+        <h3>Your Courses</h3>
+        <p class="section-text">
+          All the courses that you have created will appear here.
+        </p>
+        <ul id="teacherCoursesList" class="course-list"></ul>
+      </div>
+    </section>
+
+    <!-- STUDENT DASHBOARD -->
+    <section id="studentDashboard" class="card dashboard-card hidden">
+      <div class="dashboard-header">
+        <div>
+          <h2>Student Dashboard</h2>
+          <p class="lead-small">
+            Browse available courses, open learning materials, attempt quizzes and see
+            your recent performance.
+          </p>
+        </div>
+        <div class="dashboard-badge student">Student Mode</div>
+      </div>
+
+      <!-- Available Courses -->
+      <div class="sub-section">
+        <h3>Available Courses</h3>
+        <p class="section-text">
+          Each course can have video, PDF/notes and quiz. Use the buttons to open
+          study material or directly attempt a quiz.
+        </p>
+        <ul id="studentCoursesList" class="course-list"></ul>
+      </div>
+
+      <!-- Quiz Area -->
+      <div id="quizSection" class="sub-section quiz-section hidden">
+        <h3 id="quizCourseTitle">Quiz</h3>
+        <p id="quizQuestionText" class="quiz-question"></p>
+        <div id="quizOptions" class="quiz-options"></div>
+        <button id="submitQuizBtn" class="btn small hidden">Submit Answer</button>
+        <p id="quizResult" class="quiz-result-text"></p>
+      </div>
+
+      <!-- Progress -->
+      <div class="sub-section">
+        <h3>Your Quiz Attempts</h3>
+        <p class="section-text">
+          Each quiz attempt is stored so that we can see basic performance history.
+        </p>
+        <ul id="studentProgressList" class="progress-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Sikhya Setu Arena Lite – Digital Web Learning Platform for Rural Students
+  </footer>
+
+  <!-- 🔐 Load config.js first (contains API key, DO NOT upload to GitHub) -->
+  <script src="config.js"></script>
+
+  <!-- 🚀 Load app logic -->
+  <script src="app.js"></script>
+</body>
+</html>
